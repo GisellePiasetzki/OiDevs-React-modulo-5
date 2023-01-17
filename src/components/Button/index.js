@@ -1,10 +1,10 @@
 
-function Button({link, texto}){
+function Button({redirecionar, texto}){
     return (
 
-        <a href={link} target="blank">
-            <button>{texto}</button>
-        </a>
+       <button
+       onClick={redirecionar}
+       >{texto}</button>
     
 
     )
