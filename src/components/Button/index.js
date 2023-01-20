@@ -1,13 +1,22 @@
+import PropTypes from 'prop-types';
 
-function Button({redirecionar, texto}){
+const Button = ({aoClicar, texto}) => {
     return (
 
        <button
-       onClick={redirecionar}
+       onClick={aoClicar}
        >{texto}</button>
     
 
     )
+}
+Button.propTypes = {
+    texto: PropTypes.string.isRequired,
+    aoClicar: PropTypes.func
+}
+
+Button.defaultProps = {
+    texto:"Entrar",
 }
 
 export default Button;

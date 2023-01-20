@@ -3,7 +3,7 @@ import Login from './pages/Login/index.jsx';
 import Home from './pages/Home/index.jsx';
 
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Routes>
@@ -11,8 +11,6 @@ function App() {
         <Route path="/home" element={<Home/>}></Route>
       </Routes>
     </Router>
-
-
   );
 }
 

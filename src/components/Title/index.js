@@ -1,6 +1,15 @@
+import PropTypes from 'prop-types';
 
-function Title(props){
-    return<h1>{props.title}</h1>
+const Title = ({title}) => {
+    return<h1>{title}</h1>
 }
 
+Title.propTypes = {
+    title: PropTypes.string,
+}
+
+Title.defaultProps = {
+    title: "Início",
+   
+}
 export default Title;
