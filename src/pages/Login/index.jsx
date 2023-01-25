@@ -9,31 +9,67 @@ import {useState} from 'react';
 
 const Login = () => {
     const navigate = useNavigate();
-    const [title, setTitle] = useState("Login")
+    const [title, setTitle] = useState("Login");
+    const [showError, setShowError] = useState(false);
+    const[nomeDeUsuario, setNomeDeUsuario] = useState("");
+    const[senha, setSenha] = useState("");
+    const [inputColor, setInputColor] = useState("white")
 
-    const [subTitle, setSubTitle] = useState ("")
+    const [usuarios, setUsuarios] = useState([
+        {
+          email: "joao@hotmail.com",
+          password: "oidevs",
+        },
+        {
+          email: "jady@oi.com",
+          password: "oidevs",
+        },
+      ]);
+
+
 
     const mudarTitulo = () => {
         setTitle("Home")
     }
 
     const vaParaHome = () => {
-        navigate("/home")
+        //usuário e senha corresponde a algum existente?
+
+        const usuarioEscolhido = usuarios.find(usuario => usuario.email === nomeDeUsuario && usuario.password === senha)
+        console.log(usuarioEscolhido);
+
+        if(usuarioEscolhido){
+            navigate("/home");
+        } else {
+           setShowError(true);
+           setInputColor("red")
+        }
+
     }
 
-    const apareceNome = (event) => {
-        setSubTitle(event.target.value)
-    }
+   
     return (
   
         <div className="container">
             <Title title={title}/>
-            <SubTitle texto={subTitle}/>
-            <Input label="Usuário" value={SubTitle} onChange={apareceNome}/>
-            <Input label="Senha"/>
+                {showError ? (
+                    <SubTitle texto="Credenciais inválidas"/>
+                ) : (
+                    <Title title="Ainda não digitou"/>
+                )}
+            <Input 
+                label="Usuário" 
+                cor={inputColor}
+            />  
+            <Input 
+                label="Senha"
+                cor={inputColor}
+                onChange={(e) => setSenha(e.target.value)}
+                hideContent 
+            />
             <Button 
-            texto="Entrar"
-            aoClicar={vaParaHome} 
+                texto="Entrar"
+                aoClicar={vaParaHome} 
             />
              <Button 
             texto="Trocar título"

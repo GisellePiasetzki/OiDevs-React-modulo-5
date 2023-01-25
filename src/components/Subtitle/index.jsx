@@ -1,5 +1,5 @@
 const SubTitle = ({texto}) => {
-    return <h3 >Olá, {texto} </h3>
+    return <h3 >{texto} </h3>
 }
 
 
